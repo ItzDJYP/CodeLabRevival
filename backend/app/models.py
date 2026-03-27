@@ -8,6 +8,13 @@ class LoginRequest(BaseModel):
     password: str
 
 
+class RegisterRequest(BaseModel):
+    name: str
+    email: str
+    password: str
+    role: str  # student | instructor
+
+
 class UserPublic(BaseModel):
     id: str
     name: str

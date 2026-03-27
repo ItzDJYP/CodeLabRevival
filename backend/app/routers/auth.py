@@ -8,8 +8,8 @@ from datetime import datetime, timedelta, timezone
 from fastapi import APIRouter, HTTPException, status
 from jose import jwt
 
-from app.data import get_user_by_email, verify_password
-from app.models import LoginRequest, TokenResponse, UserPublic
+from app.data import get_user_by_email, verify_password, USERS, pwd_context
+from app.models import LoginRequest, RegisterRequest, TokenResponse, UserPublic
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -41,5 +41,39 @@ def login(body: LoginRequest):
             name=user["name"],
             email=user["email"],
             role=user["role"],
+        ),
+    )
+
+
+@router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
+def register(body: RegisterRequest):
+    if body.role not in ("student", "instructor"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Role must be 'student' or 'instructor'.",
+        )
+    if get_user_by_email(body.email):
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="An account with that email already exists.",
+        )
+    new_id = max(u["id"] for u in USERS) + 1
+    new_user = {
+        "id": new_id,
+        "name": body.name.strip(),
+        "email": body.email.strip().lower(),
+        "hashed_password": pwd_context.hash(body.password),
+        "role": body.role,
+    }
+    USERS.append(new_user)
+    token = _create_token(new_id, body.role)
+    return TokenResponse(
+        access_token=token,
+        token_type="bearer",
+        user=UserPublic(
+            id=str(new_id),
+            name=new_user["name"],
+            email=new_user["email"],
+            role=new_user["role"],
         ),
     )

@@ -101,7 +101,7 @@ export default function LoginPage() {
 
           <div className="login-links">
             <a href="#">Forgot password?</a><br />
-            Don&apos;t have an account? <a href="#">Register here</a><br />
+            Don&apos;t have an account? <a href="/register">Register here</a><br />
             <a href="#">Student Self-Enrollment</a>
           </div>
         </div>

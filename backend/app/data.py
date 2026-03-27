@@ -29,6 +29,13 @@ USERS = [
         "hashed_password": pwd_context.hash("student123"),
         "role": "student",
     },
+    {
+        "id": 4,
+        "name": "Test User",
+        "email": "testuser@codelab.edu",
+        "hashed_password": pwd_context.hash("test123"),
+        "role": "student",
+    },
 ]
 
 # ── Courses ───────────────────────────────────────────────────

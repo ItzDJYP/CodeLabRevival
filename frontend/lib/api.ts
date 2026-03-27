@@ -137,6 +137,12 @@ export const api = {
       body: JSON.stringify({ email, password }),
     }),
 
+  register: (name: string, email: string, password: string, role: string) =>
+    apiFetch<TokenResponse>("/auth/register", {
+      method: "POST",
+      body: JSON.stringify({ name, email, password, role }),
+    }),
+
   getCourses: () => apiFetch<CoursesResponse>("/courses"),
 
   getLabStructure: (courseId: string) =>
