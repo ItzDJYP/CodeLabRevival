@@ -121,7 +121,7 @@ export interface Exercise {
 }
 
 export interface DiffLine {
-  type: 'equal' | 'insert' | 'delete' | 'replace_old' | 'replace_new';
+  type: "equal" | "insert" | "delete" | "replace_old" | "replace_new";
   line_no_left: number | null;
   line_no_right: number | null;
   content: string;
@@ -130,15 +130,15 @@ export interface DiffLine {
 export interface SubmissionResult {
   submission_id: string;
   exercise_id: string;
-  course_id: string;     // used to load the lab TOC on the results page
+  course_id: string; // used to load the lab TOC on the results page
   status: string;
   message: string;
   compiler_output: string;
   your_code: string;
   solution_code: string;
   diff: DiffLine[];
-  score: number;  // 0-100 similarity-based
-  grade: string;  // A+, A, A-, B+, … F
+  score: number; // 0-100 similarity-based
+  grade: string; // A+, A, A-, B+, … F
 }
 
 export interface SubmissionHistory {
@@ -147,7 +147,7 @@ export interface SubmissionHistory {
   status: string;
   score: number;
   grade: string;
-  submitted_at: string;  // ISO-8601
+  submitted_at: string; // ISO-8601
   code: string;
 }
 
