@@ -36,6 +36,20 @@ USERS = [
         "hashed_password": pwd_context.hash("test123"),
         "role": "student",
     },
+    {
+        "id": 5,
+        "name": "Daphne Grayy",
+        "email": "daphne@codelab.edu",
+        "hashed_password": pwd_context.hash("password123"),
+        "role": "instructor",
+    },
+    {
+        "id": 6,
+        "name": "Ashanti Benons",
+        "email": "ashanti@codelab.edu",
+        "hashed_password": pwd_context.hash("password123"),
+        "role": "instructor",
+    }
 ]
 
 # ── Courses ───────────────────────────────────────────────────
@@ -61,6 +75,33 @@ SEMESTERS = [
                 "language": "Java",
                 "access_code": "CODE-32744-KAHZ-67",
             },
+            {
+                "course_id": "59095",
+                "number": "CS1-Java",
+                "title": "Generic JAVA For Development",
+                "section": "B",
+                "instructor": "Arnow",
+                "language": "Java",
+                "access_code": "TCAB-32742-HWYW-68",
+            },
+            {
+                    "course_id": "59096",
+                    "number": "CS1-Java",
+                    "title": "AB-Generic JAVA For Development",
+                    "section": "AB",
+                    "instructor": "Benons",
+                    "language": "Java",
+                    "access_code": "CODE-32745-KAHZ-68",
+            },
+            {
+                "course_id": "59098",
+                "number": "CS1-Java",
+                "title": "DG-Generic JAVA For Development",
+                "section": "DG",
+                "instructor": "DG",
+                "language": "Java",
+                "access_code": "CODE-32746-KAHZ-68",
+            }
         ],
     }
 ]
